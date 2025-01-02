@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/api/rc-details",
+      "src": "/api/(.*)",
       "dest": "api/rc-checker.js"
     }
   ]
