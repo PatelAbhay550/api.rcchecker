@@ -15,7 +15,7 @@ app.get("/api/rc-details", async (req, res) => {
     return res.status(400).json({ error: "Vehicle number is required." });
   }
 
-  const url = `https://www.carinfo.app/_next/data/ZGm7SzTcPSKEGOoFIYsN0/rc-details/${vehicleno}.json?rc=${vehicleno}`;
+  const url = `https://www.carinfo.app/_next/data/yHQkhyU-grJPiMY3jWpzQ/rc-details/${vehicleno}.json?rc=${vehicleno}`;
 
   try {
     const response = await axios.get(url);
