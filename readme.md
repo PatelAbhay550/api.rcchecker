@@ -14,4 +14,4 @@ Fetch RC details based on the vehicle number.
 
 #### Example
 ```bash
-curl "https://your-backend.vercel.app/api/rc-details?vehicleno=UP27AY7254"
+curl "api-rcchecker.vercel.app/api/rc-details?vehicleno=UP27AY7254"
