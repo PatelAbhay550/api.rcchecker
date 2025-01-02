@@ -15,21 +15,17 @@ app.get("/rc-details", async (req, res) => {
     return res.status(400).json({ error: "Vehicle number is required." });
   }
 
-  // External API URL
   const url = `https://www.carinfo.app/_next/data/ZGm7SzTcPSKEGOoFIYsN0/rc-details/${vehicleno}.json?rc=${vehicleno}`;
 
   try {
-    // Fetch data from the external API
     const response = await axios.get(url);
 
-    // Check if the response contains the expected data
     if (
       response.data &&
       response.data.pageProps &&
       response.data.pageProps.rcDetailsResponse &&
       response.data.pageProps.rcDetailsResponse.data
     ) {
-      // Extract relevant data for the client
       const webSection =
         response.data.pageProps.rcDetailsResponse.data.webSections[0];
 
@@ -51,7 +47,6 @@ app.get("/rc-details", async (req, res) => {
 
       const vehicleModel = webSection.message.subtitle || "Not available";
 
-      // Respond with the filtered data
       return res.json({
         ownerName,
         vehicleNumber,
@@ -61,12 +56,9 @@ app.get("/rc-details", async (req, res) => {
       });
     }
 
-    // Handle case where data is not found
     res.status(404).json({ error: "Vehicle details not found." });
   } catch (error) {
     console.error("Error fetching data:", error.message);
-
-    // Handle API errors or network issues
     res.status(500).json({
       error:
         "Failed to fetch data. Please check the vehicle number or try again later.",
@@ -74,7 +66,6 @@ app.get("/rc-details", async (req, res) => {
   }
 });
 
-// Export the app for Vercel serverless deployment
 module.exports = (req, res) => {
   app(req, res);
 };
