@@ -75,4 +75,6 @@ app.get("/rc-details", async (req, res) => {
 });
 
 // Export the app for Vercel serverless deployment
-module.exports = app;
+module.exports = (req, res) => {
+  app(req, res);
+};
