@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 
 // Endpoint to fetch vehicle details
-app.get("/rc-details", async (req, res) => {
+app.get("/api/rc-details", async (req, res) => {
   const { vehicleno } = req.query;
 
   if (!vehicleno) {
@@ -59,6 +59,7 @@ app.get("/rc-details", async (req, res) => {
     res.status(404).json({ error: "Vehicle details not found." });
   } catch (error) {
     console.error("Error fetching data:", error.message);
+
     res.status(500).json({
       error:
         "Failed to fetch data. Please check the vehicle number or try again later.",
@@ -66,6 +67,5 @@ app.get("/rc-details", async (req, res) => {
   }
 });
 
-module.exports = (req, res) => {
-  app(req, res);
-};
+// Export the app for Vercel
+module.exports = app;
