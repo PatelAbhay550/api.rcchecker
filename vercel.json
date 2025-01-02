@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "builds":[{"src":"/api/rc-checker.js","use":"@vercel/node"}],
+  "routes":[{"src":"*/(.*)","dest":"/"}]
+
+}
